@@ -23,7 +23,7 @@ public class StudentUser implements Representation {
     }
     //---------------------------------Name Validation---------------------------------------------------//
     public void setName(String name) {
-        if (name == null || name.trim().isEmpty()) {
+       /* if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException("Name cannot be empty");
         }
 
@@ -31,7 +31,7 @@ public class StudentUser implements Representation {
             if (!Character.isLetter(name.charAt(i)) && name.charAt(i) != ' ') {
                 throw new IllegalArgumentException("Name can only contain letters and spaces");
             }
-        }
+        }*/
         this.name = name;
     }
 
@@ -74,9 +74,7 @@ public class StudentUser implements Representation {
 
        @Override
     public String lineRepresentation() {
-        // Escape commas in fields to prevent CSV parsing issues
-        return String.format("%d,\"%s\",%d,%s,\"%s\",%f", 
-            id, name, age, gender, department, gpa);
+        return id+","+name+","+age+","+department+","+gender+","+gpa;
     }
     @Override
     public String getSearchKey() {
