@@ -5,7 +5,7 @@
 package Student;
 
 import database.Representation;
-public class StudentUser implements Representation {
+public final class StudentUser implements Representation {
     private final int id;
     private String name;
     private int age;
@@ -54,7 +54,7 @@ public class StudentUser implements Representation {
         }
         String result = gender.substring(0, 1).toUpperCase() + gender.substring(1);
         this.gender=result;*/
-        this.gender=gender
+        this.gender=gender;
 
     }
 
@@ -85,5 +85,26 @@ public class StudentUser implements Representation {
     public int getId() {
         return id;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public float getGpa() {
+        return gpa;
+    }
+    
 }
 
