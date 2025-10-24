@@ -45,7 +45,7 @@ public class StudentUser implements Representation {
 
     //--------------------------------Gender Validation--------------------------------------------------//
     public void setGender(String gender) {
-        if(gender==null || gender.trim().isEmpty()){
+        /*if(gender==null || gender.trim().isEmpty()){
             throw new IllegalArgumentException("Error: Gender cannot be empty");
         }
         gender = gender.trim().toLowerCase();
@@ -53,7 +53,8 @@ public class StudentUser implements Representation {
             throw new IllegalArgumentException("Error: Gender must be female or male");
         }
         String result = gender.substring(0, 1).toUpperCase() + gender.substring(1);
-        this.gender=result;
+        this.gender=result;*/
+        this.gender=gender
 
     }
 
@@ -85,3 +86,4 @@ public class StudentUser implements Representation {
         return id;
     }
 }
+
