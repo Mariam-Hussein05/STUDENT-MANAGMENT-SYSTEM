@@ -31,11 +31,28 @@ public class HomeFrame extends JFrame {
         backgroundPanel.setLayout(new BorderLayout());
         add(backgroundPanel);
 
+        // Create a header panel to hold both title and welcome message
+        JPanel headerPanel = new JPanel();
+        headerPanel.setLayout(new BorderLayout());
+        headerPanel.setOpaque(false);
+        headerPanel.setBorder(BorderFactory.createEmptyBorder(30, 10, 20, 10));
+
+        // Main title
         JLabel titleLabel = new JLabel("Student Management System Dashboard", SwingConstants.CENTER);
         titleLabel.setFont(new Font("Segoe UI Semibold", Font.BOLD, 28));
         titleLabel.setForeground(Color.WHITE);
-        titleLabel.setBorder(BorderFactory.createEmptyBorder(30, 10, 20, 10));
-        backgroundPanel.add(titleLabel, BorderLayout.NORTH);
+
+        // Welcome message
+        JLabel welcomeLabel = new JLabel("Welcome Admin", SwingConstants.CENTER);
+        welcomeLabel.setFont(new Font("Segoe UI", Font.ITALIC, 18));
+        welcomeLabel.setForeground(new Color(255, 255, 255, 220)); // Semi-transparent white
+        welcomeLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 0, 10));
+
+        // Add both labels to header panel
+        headerPanel.add(titleLabel, BorderLayout.NORTH);
+        headerPanel.add(welcomeLabel, BorderLayout.CENTER);
+
+        backgroundPanel.add(headerPanel, BorderLayout.NORTH);
 
         JPanel mainPanel = new JPanel(new GridLayout(2, 2, 30, 30));
         mainPanel.setOpaque(false);

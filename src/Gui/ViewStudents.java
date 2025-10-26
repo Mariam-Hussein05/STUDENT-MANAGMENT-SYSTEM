@@ -28,7 +28,7 @@ public class ViewStudents extends javax.swing.JFrame {
 
     private void loadDataToTable() {
         DefaultTableModel model = new DefaultTableModel();
-        model.setColumnIdentifiers(new Object[] { "ID", "Full Name", "Age", "Department", "Gender", "GPA" });
+        model.setColumnIdentifiers(new Object[] { "ID", "Full Name", "Age", "Gender", "]Department", "GPA" });
 
         AdminRole admin = new AdminRole();
 

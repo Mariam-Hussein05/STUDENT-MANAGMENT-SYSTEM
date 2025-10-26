@@ -492,7 +492,7 @@ public class SearchPanel extends JPanel {
             }
 
             AdminRole admin = new AdminRole();
-            boolean success = admin.updateStudent(currentStudent.getId(), name, age, department, gender, gpa);
+            boolean success = admin.updateStudent(currentStudent.getId(), name, age, gender, department, gpa);
 
             if (success) {
                 JOptionPane.showMessageDialog(this, "Student updated successfully!");

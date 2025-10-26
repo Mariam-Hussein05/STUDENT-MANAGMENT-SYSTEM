@@ -2,3 +2,5 @@
 121212,cbbbvbv,23,Female,Mechatronics,2.3
 12212,bbbb,23,Female,Mechatronics,3.0
 12121,bbbb,23,Female,Computer and Communication,1.0
+22,dsaas,22,Female,Mechatronics,2.0
+222222,moaz,22,Male,Electromechanics,2.0
