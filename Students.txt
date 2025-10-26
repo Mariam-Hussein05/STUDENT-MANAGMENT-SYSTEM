@@ -1,3 +1,2 @@
 12,moaz,20,Civil and Architecture,Male,2.0
 14,ahmed4,21,Mechatronics,Male,4.0
-20,moaz,20,Male,Computer and Communication,3.0
