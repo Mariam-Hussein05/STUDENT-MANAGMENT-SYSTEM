@@ -23,15 +23,7 @@ public final class StudentUser implements Representation {
     }
     //---------------------------------Name Validation---------------------------------------------------//
     public void setName(String name) {
-       /* if (name == null || name.trim().isEmpty()) {
-            throw new IllegalArgumentException("Name cannot be empty");
-        }
 
-        for (int i = 0; i < name.length(); i++) {
-            if (!Character.isLetter(name.charAt(i)) && name.charAt(i) != ' ') {
-                throw new IllegalArgumentException("Name can only contain letters and spaces");
-            }
-        }*/
         this.name = name;
     }
 
@@ -45,15 +37,7 @@ public final class StudentUser implements Representation {
 
     //--------------------------------Gender Validation--------------------------------------------------//
     public void setGender(String gender) {
-        /*if(gender==null || gender.trim().isEmpty()){
-            throw new IllegalArgumentException("Error: Gender cannot be empty");
-        }
-        gender = gender.trim().toLowerCase();
-        if(!gender.equals("female")&& !gender.equals("male")){
-            throw new IllegalArgumentException("Error: Gender must be female or male");
-        }
-        String result = gender.substring(0, 1).toUpperCase() + gender.substring(1);
-        this.gender=result;*/
+
         this.gender=gender;
 
     }
@@ -75,7 +59,7 @@ public final class StudentUser implements Representation {
 
        @Override
     public String lineRepresentation() {
-        return id+","+name+","+age+","+department+","+gender+","+gpa;
+        return id+","+name+","+age+","+gender+","+department+","+gpa;
     }
     @Override
     public String getSearchKey() {
