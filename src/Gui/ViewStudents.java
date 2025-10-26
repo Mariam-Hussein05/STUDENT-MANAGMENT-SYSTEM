@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Gui;
-import Admin.AdminRole;
+
+import Student.StudentDatabase;
 import Student.StudentUser;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
@@ -26,12 +27,16 @@ public class ViewStudents extends javax.swing.JFrame {
     }
 
     private void loadDataToTable() {
+       
         DefaultTableModel model = new DefaultTableModel();
-        model.setColumnIdentifiers(new Object[] { "ID", "Full Name", "Age", "Department", "Gender", "GPA" });
+        model.setColumnIdentifiers(new Object[] { "ID", "Full Name", "Age", "Gender","Department", "GPA" });
 
-       AdminRole admin = new AdminRole();
+       
+        StudentDatabase db = new StudentDatabase("Students.txt");
+        db.readFromFile();
 
-        ArrayList<StudentUser> students = admin.getAllStudents();
+        ArrayList<StudentUser> students = db.returnAllRecords();
+        
     students.sort((s1, s2) -> Integer.compare(s1.getId(), s2.getId()));
 
         for (StudentUser s : students) {
@@ -57,7 +62,7 @@ public class ViewStudents extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -79,7 +84,7 @@ public class ViewStudents extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jButton1.setText("home");
+        jButton1.setText("Home");
         jButton1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -96,35 +101,68 @@ public class ViewStudents extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addGap(139, 139, 139))
+                .addGap(37, 37, 37))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
-    }// </editor-fold>                        
+    }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-       // Return to home frame
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+           // Return to home frame
         this.dispose(); // Close current window
-        new HomeFrame().setVisible(true);
-    }// GEN-LAST:event_jButton1ActionPerformed
+        new HomeFrame().setVisible(true); // Open home frame
+    // GEN-LAST:event_homeButtonActionPerformed
 
-   
+    }//GEN-LAST:event_jButton1ActionPerformed
 
+
+ 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
+        /* Set the Nimbus look and feel */
+        // <editor-fold defaultstate="collapsed" desc=" Look and feel setting code
+        // (optional) ">
+        /*
+         * If Nimbus (introduced in Java SE 6) is not available, stay with the default
+         * look and feel.
+         * For details see
+         * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
+            logger.log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        // </editor-fold>
 
+        /* Create and display the form */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
+            logger.log(java.util.logging.Level.SEVERE, null, ex);
+        }
+
+      
         java.awt.EventQueue.invokeLater(() -> {
             ViewStudents frame = new ViewStudents();
             frame.setVisible(true);
@@ -132,9 +170,9 @@ public class ViewStudents extends javax.swing.JFrame {
 
     }
 
-    // Variables declaration - do not modify                     
+    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    // End of variables declaration                   
+    // End of variables declaration//GEN-END:variables
 }

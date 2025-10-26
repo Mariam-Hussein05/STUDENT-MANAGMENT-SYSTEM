@@ -353,7 +353,7 @@ private boolean isResetting = false;
             else if(name.isEmpty()|| name.equals("Enter student name.") ||id.isEmpty()|| age.isEmpty()|| department.trim().equals("Select")|| gender.trim().equals("Select")||gpa.isEmpty())
             {JOptionPane.showMessageDialog(this, "Please type in the empty fields."); return;}
             else       
-            {if(a.addStudent(Integer.parseInt(id),name,Integer.parseInt(age),department,gender,Float.parseFloat(gpa)))
+            {if(a.addStudent(Integer.parseInt(id),name,Integer.parseInt(age),gender,department,Float.parseFloat(gpa)))
             {JOptionPane.showMessageDialog(this, "Student added successfully!");
               nameField.setText("Enter student name.");
            IDField.setText("Enter student ID.");
