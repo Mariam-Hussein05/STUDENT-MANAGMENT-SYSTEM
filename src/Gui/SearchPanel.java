@@ -138,7 +138,7 @@ public class SearchPanel extends JPanel {
         resultScrollPane.setPreferredSize(new Dimension(600, 250));
         resultScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         resultScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        
+
         resultPanel.add(resultScrollPane, BorderLayout.CENTER);
 
         contentPanel.add(resultPanel);
@@ -146,12 +146,12 @@ public class SearchPanel extends JPanel {
         updatePanel = new JPanel(new GridLayout(6, 2, 10, 10));
         updatePanel.setOpaque(false);
         updatePanel.setBorder(BorderFactory.createTitledBorder(
-            BorderFactory.createLineBorder(new Color(255, 160, 40), 2),
-            "Update Student Information",
-            javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
-            javax.swing.border.TitledBorder.DEFAULT_POSITION,
-            new Font("Segoe UI", Font.BOLD, 14),
-            new Color(255, 160, 40)));
+                BorderFactory.createLineBorder(new Color(255, 160, 40), 2),
+                "Update Student Information",
+                javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+                javax.swing.border.TitledBorder.DEFAULT_POSITION,
+                new Font("Segoe UI", Font.BOLD, 14),
+                new Color(255, 160, 40)));
         updatePanel.setVisible(false);
 
         JLabel nameLabel = new JLabel("Name:*");
@@ -171,9 +171,9 @@ public class SearchPanel extends JPanel {
         JLabel deptLabel = new JLabel("Department:*");
         deptLabel.setFont(new Font("Segoe UI", Font.BOLD, 12));
         updatePanel.add(deptLabel);
-        updateDepartmentBox = new JComboBox<>(new String[] { 
-            "Computer and Communication", "Mechatronics", "Electromechanics", 
-            "Biomedical", "Petrochemical", "Civil and Architecture" 
+        updateDepartmentBox = new JComboBox<>(new String[] {
+                "Computer and Communication", "Mechatronics", "Electromechanics",
+                "Biomedical", "Petrochemical", "Civil and Architecture"
         });
         updateDepartmentBox.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         updatePanel.add(updateDepartmentBox);
@@ -355,28 +355,30 @@ public class SearchPanel extends JPanel {
 
     private void displayMultipleStudents() {
         StringBuilder info = new StringBuilder();
-        info.append("Found ").append(foundStudents.size()).append(" students with the name: ").append(foundStudents.get(0).getName()).append("\n\n");
-        
+        info.append("Found ").append(foundStudents.size()).append(" students with the name: ")
+                .append(foundStudents.get(0).getName()).append("\n\n");
+
         // Populate the selection combo box
         studentSelectionBox.removeAllItems();
         for (int i = 0; i < foundStudents.size(); i++) {
             StudentUser student = foundStudents.get(i);
-            String displayText = "ID: " + student.getId() + " | Age: " + student.getAge() + " | Department: " + student.getDepartment();
+            String displayText = "ID: " + student.getId() + " | Age: " + student.getAge() + " | Department: "
+                    + student.getDepartment();
             studentSelectionBox.addItem(displayText);
-            
+
             info.append("Student ").append(i + 1).append(":\n")
-                .append("ID: ").append(student.getId()).append("\n")
-                .append("Name: ").append(student.getName()).append("\n")
-                .append("Age: ").append(student.getAge()).append("\n")
-                .append("Gender: ").append(student.getGender()).append("\n")
-                .append("Department: ").append(student.getDepartment()).append("\n")
-                .append("GPA: ").append(String.format("%.2f", student.getGpa())).append("\n")
-                .append("----------------------------------------\n\n");
+                    .append("ID: ").append(student.getId()).append("\n")
+                    .append("Name: ").append(student.getName()).append("\n")
+                    .append("Age: ").append(student.getAge()).append("\n")
+                    .append("Gender: ").append(student.getGender()).append("\n")
+                    .append("Department: ").append(student.getDepartment()).append("\n")
+                    .append("GPA: ").append(String.format("%.2f", student.getGpa())).append("\n")
+                    .append("----------------------------------------\n\n");
         }
-        
+
         info.append("Please select a student from the dropdown above to update.");
         resultArea.setText(info.toString());
-        
+
         // Set the first student as current by default
         if (!foundStudents.isEmpty()) {
             currentStudent = foundStudents.get(0);
@@ -388,13 +390,13 @@ public class SearchPanel extends JPanel {
     private void displayStudentInfo(StudentUser student) {
         String info = String.format(
                 "Student Found!\n\n" +
-                "ID: %d\n" +
-                "Name: %s\n" +
-                "Age: %d\n" +
-                "Gender: %s\n" +
-                "Department: %s\n" +
-                "GPA: %.2f\n\n" +
-                "Click 'Update Student' to modify information.",
+                        "ID: %d\n" +
+                        "Name: %s\n" +
+                        "Age: %d\n" +
+                        "Gender: %s\n" +
+                        "Department: %s\n" +
+                        "GPA: %.2f\n\n" +
+                        "Click 'Update Student' to modify information.",
                 student.getId(),
                 student.getName(),
                 student.getAge(),
@@ -449,6 +451,12 @@ public class SearchPanel extends JPanel {
                 return;
             }
 
+            // Validate that name doesn't contain numbers
+            if (containsNumbers(name)) {
+                JOptionPane.showMessageDialog(this, "Name cannot contain numbers.");
+                return;
+            }
+
             if (ageText.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Age cannot be empty.");
                 return;
@@ -484,7 +492,7 @@ public class SearchPanel extends JPanel {
             }
 
             AdminRole admin = new AdminRole();
-            boolean success = admin.updateStudent(currentStudent.getId(), name, age, gender, department, gpa);
+            boolean success = admin.updateStudent(currentStudent.getId(), name, age, department, gender, gpa);
 
             if (success) {
                 JOptionPane.showMessageDialog(this, "Student updated successfully!");
@@ -497,5 +505,15 @@ public class SearchPanel extends JPanel {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error updating student: " + e.getMessage());
         }
+    }
+
+    // Helper method to check if a string contains numbers
+    private boolean containsNumbers(String text) {
+        for (char c : text.toCharArray()) {
+            if (Character.isDigit(c)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
