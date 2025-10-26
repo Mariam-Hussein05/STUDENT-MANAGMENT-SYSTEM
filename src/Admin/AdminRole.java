@@ -19,24 +19,7 @@ public class AdminRole {
     public AdminRole() {
         s = new StudentDatabase("Students.txt");
     }
-public ArrayList<StudentUser> getAllStudents() {
-        s.readFromFile();
-        return s.returnAllRecords();
-    }
-public boolean deleteStudentById(int id) {
-        s.readFromFile();
-        if (!s.containsId(id)) {
-            return false; 
-        }
-        s.deleteRecordId(id);
-        try {
-            s.saveToFile();
-            return true;
-        } catch (IOException e) {
-            System.out.println("Error saving file: " + e.getMessage());
-            return false;
-        }
-    }
+
     public boolean addStudent(int id, String name, int age, String gender, String department, float gpa) {
         s.readFromFile();
         StudentUser student = new StudentUser(id, name, age, gender, department, gpa);
@@ -50,7 +33,7 @@ public boolean deleteStudentById(int id) {
         }
     }
 
-    public boolean updateStudent(int id, String name, int age, String department, String gender, float gpa) {
+    public boolean updateStudent(int id, String name, int age, String gender, String department, float gpa) {
         s.readFromFile();
 
         // Check if student exists
